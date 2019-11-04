@@ -5,7 +5,7 @@
 <br>
 <br>
 <br>
-<h1  align=center>{{stringQuestao}}</h1>
+<h1 *ngIf="i<9" align=center>{{stringQuestao}}</h1>
 <br>
 <div align="center">
   <div *ngIf="i<9">
@@ -22,6 +22,10 @@
 <br>
 <h1  align=center>Score</h1>
 <h1  align=center>{{points}}</h1>
+<div align="center" *ngIf="i>=9">
+    <button routerLink = ''><h2>Again?</h2></button>
+  </div>
+
 
 
 

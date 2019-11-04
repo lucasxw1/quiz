@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QsService } from '../qs.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-quiz',
@@ -14,7 +15,7 @@ export class QuizComponent implements OnInit {
   points: number = 0;
   check: boolean;
 
-  constructor(private service : QsService) { }
+  constructor(private service : QsService, private spinner: NgxSpinnerService) { }
 
 
 
@@ -37,8 +38,10 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.spinner.show();
     this.service.getQuestions().subscribe(
       res => {
+        this.spinner.hide();
         this.questions = res.results;
         this.stringQuestao = this.questions[this.i].question;
         this.questao = this.questions[this.i];
